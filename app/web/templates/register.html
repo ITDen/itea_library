@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block navigation %}
+{% endblock %}
+{% block content %}
+    <div class="register">
+        <form method="POST" action="{{ url_for('register') }}">
+            {{ form.csrf_token }}
+            <table class="register_table">
+                <h2>Sign Up:</h2>
+                <tr>
+                    <td>{{ form.name.label }}</td>
+                    <td>{{ form.name(placeholder='youremail@gmail.com.ua', size=25) }}</td>
+                    {% if form.name.errors %}
+                        <ul class="errors">
+                            {% for error in form.name.errors %}
+                                "{{ form.name.label }}" {{ error }}{% endfor %}
+                        </ul>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td>{{ form.surname.label }}</td>
+                    <td>{{ form.surname(size=25) }}</td>
+                    {% if form.surname.errors %}
+                        <ul class="errors">
+                            {% for error in form.surname.errors %}
+                                "{{ form.surname.label }}" {{ error }}{% endfor %}
+                        </ul>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td>{{ form.email.label }}</td>
+                    <td>{{ form.email(size=25) }}</td>
+                    {% if form.email.errors %}
+                        <ul class="errors">
+                            {% for error in form.email.errors %}
+                                "{{ form.email.label }}" {{ error }}{% endfor %}
+                        </ul>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td>{{ form.password.label }}</td>
+                    <td>{{ form.password(size=25) }}</td>
+                    {% if form.password.errors %}
+                        <ul class="errors">
+                            {% for error in form.password.errors %}
+                                "{{ form.password.label }}" {{ error }}{% endfor %}
+                        </ul>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td>{{ form.confirm_password.label }}</td>
+                    <td>{{ form.confirm_password(size=25) }}</td>
+                    {% if form.confirm_password.errors %}
+                        <ul class="errors">
+                            {% for error in form.confirm_password.errors %}
+                                "{{ form.confirm_password.label }}" {{ error }}{% endfor %}
+                        </ul>
+                    {% endif %}
+                </tr>
+            </table>
+            <input type="submit" formnovalidate name="cancel" value="Cancel">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+{% endblock %}

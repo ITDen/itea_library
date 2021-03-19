@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block user %}
+{% endblock %}
+{% block navigation %}
+{% endblock %}
+{% block content %}
+    {% for message in messages %}
+        <h4>{{ message }}</h4>
+    {% endfor %}
+    <div class="_errors">
+        <h3>Ooops! Internal server error!</h3>
+    </div>
+{% endblock %}

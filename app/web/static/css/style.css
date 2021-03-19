@@ -1,0 +1,307 @@
+h2 {
+    margin-top: 30px;
+    font-family: "Verdana";
+    font-size: 16pt;
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+    color: red;
+}
+
+.hr_line {
+    border-color: #FFC000;
+}
+
+.main_li {
+    color: #FFC000;
+}
+
+body {
+    background-color: #FFF2CC;
+}
+
+nav a {
+    text-align: left;
+    display: block;
+    margin: 10px 0px;
+}
+
+A {
+    text-decoration: none; /* Убирает подчеркивание для ссылок */
+    color: #000000;
+}
+
+A:hover {
+    text-decoration: underline; /* Добавляем подчеркивание при наведении курсора на ссылку */
+    color: #000000; /* Ссылка красного цвета */
+}
+
+.main_container {
+    position: relative;
+}
+
+.user {
+    font-family: "Verdana";
+    text-align: right;
+    font-size: 9pt;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.login {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: Verdana;
+
+}
+
+.login_table {
+    font-family: "Verdana";
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.login_error {
+    font-family: Verdana;
+    text-align: center;
+    color: red;
+}
+
+.register {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: Verdana;
+
+}
+
+.register_table {
+    font-family: "Verdana";
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.register_error {
+    font-family: Verdana;
+    text-align: center;
+    color: red;
+}
+
+.flashed_messages {
+    font-family: "Verdana";
+    font-size: 8pt;
+    color: red;
+    font-weight: bold;
+}
+
+.navigation {
+    line-height: 115%;
+    position: absolute;
+    left: 30px;
+    width: 120px;
+    font-family: "Verdana";
+    font-size: 9pt;
+
+}
+
+.main_content {
+    margin-top: 10px;
+    margin-left: 150px;
+}
+
+.main_table {
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 10pt;
+    text-align: center;
+    font-family: "Verdana";
+
+}
+
+.main_table caption {
+    caption-side: top;
+    padding: 3px;
+    color: black;
+    text-align: left;
+    font-weight: bold;
+}
+
+.main_table th {
+    text-align: center;
+    padding: 7px;
+    background-color: #FFC000;
+
+}
+
+.main_table tr {
+    height: 40px;
+}
+
+.main_table td {
+    max-width: 200px;
+    white-space: nowrap; /* Отменяем перенос текста */
+    overflow: hidden; /* Обрезаем содержимое */
+    padding: 5px; /* Поля */
+    text-overflow: ellipsis; /* Многоточие */
+}
+
+.main_table tr:nth-child(even) {
+    background: #E7E7E7
+}
+
+.main_table tr:nth-child(odd) {
+    background: #FFFFFF
+}
+
+.edit_form {
+    font-family: "Verdana";
+    margin-right: auto;
+    margin-left: auto;
+    width: 600px;
+    text-align: center;
+}
+
+.edit_table {
+    font-family: "Verdana";
+    text-align: left !important;
+    margin-right: auto;
+    margin-left: auto;
+    border: 10px;
+    border-color: #6c6c6c;
+}
+
+.add_form {
+    font-family: "Verdana";
+    margin-right: auto;
+    margin-left: auto;
+    width: 600px;
+    text-align: center;
+}
+
+.add_table {
+    font-family: "Verdana";
+    text-align: left !important;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.checkbox {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#id_remember_me {
+    margin-left: auto;
+}
+
+.button {
+    font-family: "Verdana";
+}
+
+.pagination_ {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Verdana";
+
+}
+
+.signup {
+    position: absolute;
+
+    left: 50%;
+    right: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: Verdana;
+
+}
+
+.dataframe th {
+    text-align: center;
+    padding: 7px;
+    background-color: #FFC000;
+}
+
+.dataframe {
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 10pt;
+    text-align: center;
+    font-family: "Verdana";
+}
+
+.page_404 {
+    font-family: Verdana;
+    text-align: center;
+    font-size: 18pt;
+}
+
+.page_500 {
+    font-family: Verdana;
+    text-align: center;
+    font-size: 18pt;
+}
+
+.footer_div {
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+
+}
+
+.footer_logo {
+    float: right;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    width: 283px;
+    height: 92px;
+}
+
+.cur_date {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+}
+
+._errors {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: Verdana;
+
+}
+
+.errors {
+    color: red;
+}
+
+.template_help span {
+    font-size: 9pt;
+    display: none;
+    padding: 2px 3px;
+    margin-left: 8px;
+    width: 280px;
+}
+
+.template_help:hover span {
+    display: flex;
+    position: absolute;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    color: #6c6c6c;
+}

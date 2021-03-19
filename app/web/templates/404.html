@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block user %}
+{% endblock %}
+{% block navigation %}
+{% endblock %}
+{% block content %}
+    {% for message in messages %}
+        <h4>{{ message }}</h4>
+    {% endfor %}
+    <div class="_errors">
+        <h3>Ooops! Page not found!</h3>
+        You will be redirected in {{ (context.wait_time / 1000)|int }} seconds
+        <script>let timer = setTimeout(function () {
+            window.location.href = '{{ context.url }}'
+        }, {{ context.wait_time }});</script>
+    </div>
+{% endblock %}

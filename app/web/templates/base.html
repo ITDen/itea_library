@@ -1,0 +1,64 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <title>
+        {% block title %}ITEA Library{% endblock %}
+    </title>
+    <div class="flashed_messages">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+    {% block user %}
+        <div class="user">
+            {% if user and user.is_authenticated %}
+            <a href="{{ url_for('edit_reader', reader_id=user.id) }}">Hello, {{ user.name }}!</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
+        </div>
+    {% endblock %}
+</head>
+<div class="navigation">
+    {% block navigation %}
+        Library menu:<br>
+        <hr class="hr_line">
+        <li class="main_li"><a href="{{ url_for('get_books') }}">Books</a></li>
+        <li class="main_li"><a href="{{ url_for('add_book') }}">Add book</a></li>
+        {% if user and user.is_superuser %}
+            <li class="main_li"><a href="{{ url_for('get_readers') }}">Readers</a></li>
+        {% endif %}
+    <br>
+    <form method="post" action="{{ url_for('search') }}" class="search">
+        <tr>
+        <td>{{ g.search_form.query(placeholder='Enter book title', size=12) }}</td>
+            {% if g.search_form.query.errors %}
+            <ul class="errors">
+                {% for error in g.search_form.query.errors %}
+                <li>{{ error }}</li>{% endfor %}
+            </ul>
+            {% endif %}
+        </tr>
+        <input type="submit" value="Search book">
+    </form>
+    {% endblock %}
+</div>
+<body>
+<div class="main_content">
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+</body>
+
+{% block footer %}
+{% endblock %}
+
+</html>

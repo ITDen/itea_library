@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for message in messages %}
+        <h4>{{ message }}</h4>
+    {% endfor %}
+    <div class="content">
+        <table class="main_table">
+            <caption>Readers:</caption>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Books</th>
+                <th>Is active</th>
+                <th>Is superuser</th>
+                <th>Last login</th>
+            </tr>
+            {% for reader in readers.items %}
+                <tr>
+                    <td>{{ reader.id }}</td>
+                    {% if user and user.is_superuser %}
+                    <td><a href="{{ url_for('edit_reader', reader_id=reader.id) }}">{{ reader.name }}</a></td>
+                    {% else %}{{ reader.name }}{% endif %}
+                    <td>{{ reader.surname }}</td>
+                    <td>{{ reader.email }}</td>
+                    <td><a href="{{ url_for('get_reader_books', reader_id=reader.id) }}"
+                               title="Show all reader books">{{ reader.books.count() }}</a></td>
+                    <td>{{ reader.is_active }}</td>
+                    <td>{{ reader.is_superuser }}</td>
+                    <td>{% if reader.last_login %}{{ reader.last_login.strftime('%Y-%m-%d %H:%M:%S') }}
+                    {% else %}None{%endif%}</td>
+                </tr>
+            {% endfor %}
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div class="pagination_" align="center">
+        {% if readers.has_prev %}<a href="{{ url_for('get_readers', page=readers.prev_num) }}">
+            Prev. page</a>{% else %}Prev. page{% endif %} |
+        {% if readers.has_next %}<a href="{{ url_for('get_readers', page=readers.next_num) }}">
+            Next page</a>{% else %}Next page{% endif %}
+    </div>
+{% endblock %}

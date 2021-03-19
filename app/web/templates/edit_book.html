@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% for message in messages %}
+        <h4>{{ message }}</h4>
+    {% endfor %}
+    <div class="content">
+        <form method="post" class="edit_form" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+
+            <table class="edit_table">
+                <h2>Edit book:</h2>
+                <tr>
+                    <td>{{ form.title.label }}:</td>
+                    <td>{{ form.title(size=25) }}</td>
+                    {% if form.title.errors %}
+                        <ul class="errors">
+                            {% for error in form.title.errors %}
+                                "{{ form.title.label }}" {{ error }}{% endfor %}
+                        </ul>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td>{{ form.author.label }}:</td>
+                    <td>{{ form.author(size=25) }}</td>
+                    {% if form.author.errors %}
+                        <ul class="errors">
+                            {% for error in form.author.errors %}
+                                "{{ form.author.label }}" {{ error }}{% endfor %}
+                        </ul>
+                    {% endif %}
+                </tr>
+                <br>
+                <tr>
+                    <td>{{ form.year.label }}:</td>
+                    <td>{{ form.year(size=25) }}</td>
+                    {% if form.year.errors %}
+                        <ul class="errors">
+                            {% for error in form.year.errors %}
+                                "{{ form.year.label }}" {{ error }}{% endfor %}
+                        </ul>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td>{{ form.reader.label }}:</td>
+                    <td>{{ form.reader }}</td>
+                    {% if form.reader.errors %}
+                        <ul class="errors">
+                            {% for error in form.reader.errors %}
+                                "{{ form.reader.label }}" {{ error }}{% endfor %}
+                        </ul>
+                    {% endif %}
+                </tr>
+            </table>
+            <div class="button">
+                <input type="submit" formnovalidate name="cancel" value="Cancel">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
