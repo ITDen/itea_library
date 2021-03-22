@@ -9,7 +9,7 @@
                 <h2>Sign Up:</h2>
                 <tr>
                     <td>{{ form.name.label }}</td>
-                    <td>{{ form.name(placeholder='youremail@gmail.com.ua', size=25) }}</td>
+                    <td>{{ form.name(placeholder='Your name', size=25) }}</td>
                     {% if form.name.errors %}
                         <ul class="errors">
                             {% for error in form.name.errors %}
@@ -19,7 +19,7 @@
                 </tr>
                 <tr>
                     <td>{{ form.surname.label }}</td>
-                    <td>{{ form.surname(size=25) }}</td>
+                    <td>{{ form.surname(placeholder='Your surname', size=25) }}</td>
                     {% if form.surname.errors %}
                         <ul class="errors">
                             {% for error in form.surname.errors %}
@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                     <td>{{ form.email.label }}</td>
-                    <td>{{ form.email(size=25) }}</td>
+                    <td>{{ form.email(placeholder='youremail@gmail.com.ua', size=25) }}</td>
                     {% if form.email.errors %}
                         <ul class="errors">
                             {% for error in form.email.errors %}
@@ -39,7 +39,7 @@
                 </tr>
                 <tr>
                     <td>{{ form.password.label }}</td>
-                    <td>{{ form.password(size=25) }}</td>
+                    <td>{{ form.password(placeholder='Your password', size=25) }}</td>
                     {% if form.password.errors %}
                         <ul class="errors">
                             {% for error in form.password.errors %}
@@ -49,7 +49,7 @@
                 </tr>
                 <tr>
                     <td>{{ form.confirm_password.label }}</td>
-                    <td>{{ form.confirm_password(size=25) }}</td>
+                    <td>{{ form.confirm_password(placeholder='Your password', size=25) }}</td>
                     {% if form.confirm_password.errors %}
                         <ul class="errors">
                             {% for error in form.confirm_password.errors %}
