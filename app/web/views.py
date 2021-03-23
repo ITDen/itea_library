@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request, g
 from flask_login import login_required, current_user
 from app import app, db
-from app.web.forms import SignUpReaderForm, EditReaderForm, AddBookForm, EditBookForm, SearchForm
+from app.web.forms import EditReaderForm, AddBookForm, EditBookForm, SearchForm
 from database.models import Reader, Book
 from datetime import datetime
 import logging
@@ -17,6 +17,14 @@ def generate_form(form, obj=None):
 @login_required
 def get_books(page=1):
     books = Book.query.order_by(Book.id.desc()).paginate(page=page, per_page=15, error_out=False)
+    return render_template('books.html', books=books, user=current_user)
+
+
+@app.route('/books/<int:page>/available')
+@app.route('/books/available')
+@login_required
+def get_available_books(page=1):
+    books = Book.query.filter_by(reader_id=None).order_by(Book.id.desc()).paginate(page=page, per_page=15, error_out=False)
     return render_template('books.html', books=books, user=current_user)
 
 
@@ -78,6 +86,27 @@ def edit_book(book_id):
     return render_template('edit_book.html', form=form, user=current_user)
 
 
+@app.route('/books/delete', methods=['GET', 'POST'])
+@app.route('/books/<int:page>/delete', methods=['GET', 'POST'])
+@login_required
+def del_books(page=1):
+    if not current_user.is_superuser:
+        flash(f'Only library staff can delete books!')
+        return redirect(url_for('get_books'))
+    if request.method == 'POST':
+        books_id = [int(_id) for _id in request.form.keys() if _id.isnumeric()]
+        print(books_id)
+        books = Book.query.filter(Book.id.in_(books_id)).all()
+        for book in books:
+            db.session.delete(book)
+            flash(f'Book {book.title} delet successfully!', 'info')
+        db.session.commit()
+        return redirect(url_for('get_books'))
+    books = Book.query.filter_by(reader_id=None).order_by(Book.id.desc()).paginate(page=page, per_page=15,
+                                                                                   error_out=False)
+    return render_template('del_books.html', books=books, user=current_user)
+
+
 @app.route('/readers')
 @login_required
 def get_readers(page=1):
@@ -97,7 +126,7 @@ def get_reader_books(reader_id, page=1):
     return render_template('reader_books.html', reader=reader, books=books, user=current_user)
 
 
-@app.route('/reader/<int:reader_id>/edit', methods=['GET', 'POST'])
+@app.route('/readers/<int:reader_id>/edit', methods=['GET', 'POST'])
 @login_required
 def edit_reader(reader_id):
     if current_user.is_superuser or current_user.id == reader_id:

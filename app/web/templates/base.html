@@ -29,9 +29,11 @@
     {% block navigation %}
         Library menu:<br>
         <hr class="hr_line">
-        <li class="main_li"><a href="{{ url_for('get_books') }}">Books</a></li>
+        <li class="main_li"><a href="{{ url_for('get_books') }}">All books</a></li>
+        <li class="main_li"><a href="{{ url_for('get_available_books') }}">Available books</a></li>
         <li class="main_li"><a href="{{ url_for('add_book') }}">Add book</a></li>
         {% if user and user.is_superuser %}
+            <li class="main_li"><a href="{{ url_for('del_books') }}">Delete books</a></li>
             <li class="main_li"><a href="{{ url_for('get_readers') }}">Readers</a></li>
         {% endif %}
     <br>
