@@ -50,11 +50,15 @@ def register():
             reader.surname = form.surname.data
             reader.email = form.email.data
             reader.update_at = datetime.now()
+            if Reader.query.filter_by(email=reader.email).one_or_none():
+                flash(f'User with {reader.email} already registered!')
+                return render_template('register.html', title='Sign Up', form=form)
             try:
                 db.session.add(reader)
                 db.session.commit()
                 login_user(reader)
             except Exception as error:
+                print(error)
                 db.session.rollback()
                 flash(f'Error while registering {reader.name}! Try again.')
             else:

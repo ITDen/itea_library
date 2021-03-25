@@ -29,9 +29,7 @@ def upgrade():
     sa.Column('last_login', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('email'),
-    sa.UniqueConstraint('name'),
-    sa.UniqueConstraint('name', 'password', name='user_uix1')
+    sa.UniqueConstraint('email')
     )
     op.create_table('books',
     sa.Column('id', sa.Integer(), nullable=False),
