@@ -58,7 +58,6 @@ def register():
                 db.session.commit()
                 login_user(reader)
             except Exception as error:
-                print(error)
                 db.session.rollback()
                 flash(f'Error while registering {reader.name}! Try again.')
             else:
